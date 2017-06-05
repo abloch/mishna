@@ -70,8 +70,11 @@ class Mishna:
 		return self.get_title() + "\n\n" + self.get_text() + "\n\n" + self.get_commentaries() + "\n\n"
 
 if __name__ == '__main__':
-	with open(mishnafile, "rb") as f:
-		mishna = pickle.load(f)
+	if os.path.exists(mishnafile):
+		with open(mishnafile, "rb") as f:
+			mishna = pickle.load(f)
+	else:
+		mishna = Mishna("Mishnah Bava Metzia", 8, 1)
 	mishna = mishna.get_next()
 	print(mishna)
 	with open(mishnafile, "wb") as f:
