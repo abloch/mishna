@@ -74,7 +74,7 @@ if __name__ == '__main__':
 		with open(mishnafile, "rb") as f:
 			mishna = pickle.load(f)
 	else:
-		mishna = Mishna("Mishnah Bava Metzia", 8, 1)
+		mishna = Mishna("Mishnah Bava Metzia", 8, 2)
 	mishna = mishna.get_next()
 	print(mishna)
 	with open(mishnafile, "wb") as f:
