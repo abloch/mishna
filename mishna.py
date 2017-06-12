@@ -44,7 +44,7 @@ class Mishna:
 		return self._chapter
 
 	def get_title(self):
-		return "{} {}".format(self.get_chapter()['heSectionRef'], self.chapter, self.mishna+1)
+		return "{} {}".format(self.get_chapter()['heSectionRef'], self.mishna+1)
 
 	def get_text(self):
 		return self.get_chapter()['he'][self.mishna].strip()
@@ -82,8 +82,8 @@ class Mishna:
 		with open(mishnafile, "wb") as f:
 			pickle.dump(self, f)
 
-current = Mishna.load_current()
 if __name__ == "__main__":
+	current = Mishna.load_current()
 	next = current.get_next()
 	print(next)
 	next.save_as_current()
