@@ -44,7 +44,7 @@ class Mishna:
 		return self._chapter
 
 	def get_title(self):
-		return "{} {} {}".format(self.get_chapter()['book'], self.chapter, self.mishna)
+		return "{} {} {}".format(self.get_chapter()['heTitle'], self.chapter, self.mishna+1)
 
 	def get_text(self):
 		return self.get_chapter()['he'][self.mishna].strip()
@@ -56,7 +56,7 @@ class Mishna:
 		if not self.is_last_in_chapter():
 			return Mishna(self.masehet, self.chapter, self.mishna+1, self._chapter)
 		if self.get_chapter()['next']:  # there's another chapter in the masehet
-			return Mishna(self.masehet, self.chapter+1, 1, None)
+			return Mishna(self.masehet, self.chapter+1, 0, None)
 		return Mishna(get_next_masehet(self.masehet), 1, 1)
 
 	def get_commentaries(self):
