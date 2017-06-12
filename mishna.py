@@ -44,7 +44,7 @@ class Mishna:
 		return self._chapter
 
 	def get_title(self):
-		return "{} {} {}".format(self.get_chapter()['heTitle'], self.chapter, self.mishna+1)
+		return "{} {}".format(self.get_chapter()['heSectionRef'], self.chapter, self.mishna+1)
 
 	def get_text(self):
 		return self.get_chapter()['he'][self.mishna].strip()
