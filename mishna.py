@@ -69,13 +69,22 @@ class Mishna:
 	def __str__(self):
 		return self.get_title() + "\n\n" + self.get_text() + "\n\n" + self.get_commentaries() + "\n\n"
 
-if __name__ == '__main__':
-	if os.path.exists(mishnafile):
-		with open(mishnafile, "rb") as f:
-			mishna = pickle.load(f)
-	else:
-		mishna = Mishna("Mishnah Bava Metzia", 8, 2)
-	mishna = mishna.get_next()
-	print(mishna)
-	with open(mishnafile, "wb") as f:
-		pickle.dump(mishna, f)
+	@classmethod
+	def load_current(cls):
+		if os.path.exists(mishnafile):
+			with open(mishnafile, "rb") as f:
+				return pickle.load(f)
+		else:
+			return Mishna("Mishnah Bava Metzia", 8, 2)
+
+
+	def save_as_current(self):
+		with open(mishnafile, "wb") as f:
+			pickle.dump(self, f)
+
+current = Mishna.load_current()
+if __name__ == "__main__":
+	next = current.get_next()
+	print(next)
+	next.save_as_current()
+
