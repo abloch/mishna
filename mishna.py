@@ -57,7 +57,7 @@ class Mishna:
 			return Mishna(self.masehet, self.chapter, self.mishna+1, self._chapter)
 		if self.get_chapter()['next']:  # there's another chapter in the masehet
 			return Mishna(self.masehet, self.chapter+1, 0, None)
-		return Mishna(get_next_masehet(self.masehet), 1, 1)
+		return Mishna(get_next_masehet(self.masehet), 1, 0)
 
 	def get_commentaries(self):
 		return "_ברטנורא:_ http://www.sefaria.org/Bartenura_on_{}_{}?lang=he\n".format(self.masehet.replace(" ", "_"), self.chapter) + \
